@@ -105,6 +105,9 @@ export class NimGame {
      * Restarts the game with optional new pile counts.
      */
     reset(pileCounts = this.initialConfig.pileCounts, startingPlayer = this.initialConfig.startingPlayer) {
+        // Save these settings as the "initial" state for future restarts in this session
+        this.initialConfig = { pileCounts, startingPlayer };
+
         this.piles = pileCounts.map((count, index) => new Pile(count, index));
         this.currentPlayer = startingPlayer;
         this.gameOver = false;
