@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nim - The Strategy Game</title>
+  <link rel="stylesheet" href="./style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <div id="app" class="app-container">
+
+    <!-- Start Menu Screen -->
+    <div id="menu-screen" class="screen">
+      <header>
+        <h1>NIM</h1>
+        <div class="status-bar">Configure your game</div>
+      </header>
+
+      <section class="options-panel">
+        <div class="options-group">
+          <label>Piles Configuration (e.g. 3, 4, 5):</label>
+          <input type="text" id="pile-config-input" class="config-input" value="3, 4, 5">
+        </div>
+
+        <div class="options-group">
+          <label>Who plays first?</label>
+          <div class="radio-group">
+            <label class="radio-label">
+              <input type="radio" name="start-player" value="user" checked> You
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="start-player" value="computer"> Computer
+            </label>
+          </div>
+        </div>
+
+        <button id="start-btn" class="btn-primary" style="margin-top: 1rem;">START GAME</button>
+      </section>
+    </div>
+
+    <!-- Game Screen -->
+    <div id="game-screen" class="screen hidden">
+      <header>
+        <h1>NIM</h1>
+        <div id="status" class="status-bar">Your turn.</div>
+      </header>
+
+      <main class="game-board" id="board">
+        <!-- Piles will be injected here by JS -->
+      </main>
+
+      <section class="controls">
+        <button id="end-turn" class="btn-primary" disabled>PICK SELECTED</button>
+        <div class="secondary-controls">
+          <button id="restart-btn" class="btn-outline">RESTART</button>
+          <button id="new-game-btn" class="btn-outline">NEW GAME</button>
+        </div>
+      </section>
+    </div>
+
+  </div>
+
+  <!-- Win/Loss Overlay -->
+  <div id="overlay" class="overlay">
+    <div class="modal">
+      <h2 id="winner-text">YOU WON!</h2>
+      <p id="winner-subtext">Perfect strategy.</p>
+      <button id="play-again-btn" class="btn-primary" style="margin-top: 1.5rem;">PLAY AGAIN</button>
+    </div>
+  </div>
+
+  <script type="module" src="/main.js"></script>
+</body>
+
+</html>
