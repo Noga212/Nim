@@ -51,6 +51,14 @@ export class UIManager {
         this.gameScreen.classList.add('hidden');
         this.menuScreen.classList.remove('hidden');
         this.overlay.classList.remove('show');
+
+        // Ensure the menu reflects the current initial configuration
+        const startPlayer = this.game.initialConfig.startingPlayer;
+        const radio = document.querySelector(`input[name="start-player"][value="${startPlayer}"]`);
+        if (radio) radio.checked = true;
+
+        const pilesInput = document.getElementById('pile-config-input');
+        if (pilesInput) pilesInput.value = this.game.initialConfig.pileCounts.join(', ');
     }
 
     /**
@@ -90,7 +98,7 @@ export class UIManager {
      * Restarts the game with the same initial settings of the current session.
      */
     handleRestart() {
-        this.game.reset();
+        this.game.reset(); // This now uses internal initialConfig
         this.resetSelection();
         this.render();
 
